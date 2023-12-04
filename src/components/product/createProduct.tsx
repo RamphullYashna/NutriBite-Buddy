@@ -14,10 +14,9 @@ import {
 } from "~/components/ui/card"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
-
 import { api } from "~/utils/api"
-export default function CreateProduct(updateData: { id?: string }) {
 
+export default function CreateProduct(updateData: { id?: string }) {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [type, setType] = useState('');
@@ -54,8 +53,8 @@ export default function CreateProduct(updateData: { id?: string }) {
                 type: type
             })
         }
-
     }
+
     return (
         <form onSubmit={submitHandler}>
             <Toaster />
