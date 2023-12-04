@@ -21,7 +21,19 @@ export const productRouter = createTRPCRouter({
       });
       return product;
     }),
-
+  updateById: protectedProcedure
+    .input(z.object({ name: z.string(), type: z.string(), price: z.number(), id: z.string() }))
+    .mutation(async ({ input: { name, price, type, id }, ctx }) => {
+      const product = await prisma.products.update({
+        where: { id: id },
+        data: {
+          name: name,
+          price: price,
+          type: type
+        }
+      });
+      return product;
+    }),
   getProducts: protectedProcedure.input(z.object({ id: z.string() }))
     .query(async ({ }) => {
       return prisma.products.findMany({});
